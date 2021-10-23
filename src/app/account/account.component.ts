@@ -16,12 +16,23 @@ export class AccountComponent implements OnInit {
     const array = Object.values(res)[0];
     for(let a in array){
       if(username == array[a]["username"]){
-        this.user = {"name" : array[a]["username"], "walletBalance" : array[a]["walletBalance"]};
+        this.user = array[a];
       }
     }
     
     },
     (error)=>{
+      console.log(error);
+    });
+  }
+
+  addAmount(amount : number){
+    this.user["walletBalance"] = this.user["walletBalance"] + amount;
+    this.userapiService.updateUser(this.user, this.user["id"]).subscribe((res) => {
+      console.log(res);
+      window.location.reload;
+    },
+    (error) => {
       console.log(error);
     });
   }

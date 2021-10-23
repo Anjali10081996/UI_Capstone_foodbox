@@ -18,6 +18,8 @@ import { ListordersComponent } from './orders/listorders/listorders.component';
 import { AccountComponent } from './account/account.component';
 import { CreateproductComponent } from './products/createproduct/createproduct.component';
 import { UpdateproductComponent } from './products/updateproduct/updateproduct.component';
+import { CartComponent } from './cart/cart.component';
+import { OrderdetailsComponent } from './orders/orderdetails/orderdetails.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { UpdateproductComponent } from './products/updateproduct/updateproduct.c
     ListordersComponent,
     AccountComponent,
     CreateproductComponent,
-    UpdateproductComponent
+    UpdateproductComponent,
+    CartComponent,
+    OrderdetailsComponent
 
   ],
   imports: [

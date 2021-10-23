@@ -9,8 +9,16 @@
         </div>
         <div class="modal-body">
           <ul>
-              <li>Name : {{ user["name"] }}</li>
+              <li>Name : {{ user["username"] }}</li>
               <li>Wallet Balance (in Rs.) : {{ user["walletBalance"] }}</li>
+              <br>
+              <li><button class="btn btn-primary" (click)="addAmount(500)">Add 500</button></li>
+              <br>
+              <li><button class="btn btn-primary" (click)="addAmount(1000)">Add 1000</button></li>
+              <br>
+              <li><button class="btn btn-primary" (click)="addAmount(5000)">Add 5000</button></li>
+              <br>
+              <li><button class="btn btn-primary" (click)="addAmount(10000)">Add 10000</button></li>
           </ul>
         </div>
       </div>

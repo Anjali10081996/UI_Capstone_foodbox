@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,13 +13,15 @@ export class NavbarComponent implements OnInit {
   public isAdmin : string;
   public isAccountDisplay : string;
   public isOrderDisplay : string;
-  constructor() {
+  public isCartDisplay : string;
+  constructor(private router : Router) {
     this.isSigninDisplay = "block";
     this.isSignupDisplay = "block";
     this.isLogoutDisplay = "none";
     this.isAdmin = "none";
     this.isAccountDisplay = "none";
     this.isOrderDisplay = "none";
+    this.isCartDisplay = "none";
    }
 
   ngOnInit(): void {
@@ -27,6 +30,7 @@ export class NavbarComponent implements OnInit {
       this.isLogoutDisplay = "block";
       this.isAccountDisplay = "block";
       this.isOrderDisplay = "block";
+      this.isCartDisplay = "block";
       if(sessionStorage.getItem("role") == "admin"){
         this.isAdmin = "block";
       }
@@ -41,7 +45,9 @@ export class NavbarComponent implements OnInit {
       this.isAccountDisplay = "none";
       this.isOrderDisplay = "none";
       this.isAdmin = "none";
+      this.isCartDisplay = "none";
     }
   }
+
 
 }
