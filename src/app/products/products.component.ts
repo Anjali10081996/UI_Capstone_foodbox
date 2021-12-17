@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartapiService } from '../service/cartapi.service';
@@ -12,6 +12,7 @@ import { UserapiService } from '../service/userapi.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  public category : string = "";
   public pId : string = "";
   public products : any;
   public searchForm : FormGroup;
@@ -21,6 +22,7 @@ export class ProductsComponent implements OnInit {
   public cartProduct : any;
   public displayAlert : string;
   public displayAlertPresent : string;
+  public isAddDisplay : string;
   constructor(private router : Router, private productapiService : ProductapiService, private userapiService :UserapiService, private cartapiService : CartapiService, private formBuilder: FormBuilder) { 
     this.searchForm = this.formBuilder.group({
       search : [""]
@@ -28,11 +30,41 @@ export class ProductsComponent implements OnInit {
     this.searchText = "";
     this.displayAlert = "none";
     this.displayAlertPresent = "none";
+    this.isAddDisplay = "none";
   }
  
   ngOnInit(): void {
-      this.productapiService.getProducts(this.searchText).subscribe((res) => {  
-        this.products = res;
+    if(sessionStorage.getItem("username") != null && sessionStorage.getItem("role") != null){
+      if(sessionStorage.getItem("role") == "admin"){
+        this.isAddDisplay = "block";
+      }
+      else{
+        this.isAddDisplay = "none";
+      }
+    }
+    else{
+      this.isAddDisplay = "none";
+    }
+      let cat = this.router.url.split("=")[1];
+      this.category = cat;
+      this.productapiService.getProducts(this.searchText).subscribe((res) => {
+        console.log(this.category);
+        console.log("category");
+        if(this.category != null){
+          console.log(this.category);
+          console.log("category");
+          let prodArray = Object.values(res);
+          let prod : any[] = [];
+          for(let p in prodArray){
+            if(prodArray[p]["category"] == this.category){
+              prod.push(prodArray[p]);
+            }
+          }
+          this.products= prod;
+        }
+        else{
+          this.products = res;
+        }   
         console.log("Yesss");
         console.log(this.products);
       },
@@ -69,7 +101,7 @@ export class ProductsComponent implements OnInit {
       let username = sessionStorage.getItem("username");
       if(username != null){
         this.userapiService.getUsers().subscribe((res) => {
-          const array = Object.values(res)[0];
+          const array = Object.values(res);
           for(let u in array){
             console.log("inside user array");
             if(array[u]["username"] == username ){

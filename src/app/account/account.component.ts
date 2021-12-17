@@ -13,7 +13,7 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     let username = sessionStorage.getItem("username");
     this.userapiService.getUsers().subscribe((res) => {
-    const array = Object.values(res)[0];
+    const array = Object.values(res);
     for(let a in array){
       if(username == array[a]["username"]){
         this.user = array[a];

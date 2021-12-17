@@ -20,6 +20,7 @@ import { CreateproductComponent } from './products/createproduct/createproduct.c
 import { UpdateproductComponent } from './products/updateproduct/updateproduct.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderdetailsComponent } from './orders/orderdetails/orderdetails.component';
+import { CuisinesComponent } from './cuisines/cuisines.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { OrderdetailsComponent } from './orders/orderdetails/orderdetails.compon
     CreateproductComponent,
     UpdateproductComponent,
     CartComponent,
-    OrderdetailsComponent
+    OrderdetailsComponent,
+    CuisinesComponent
 
   ],
   imports: [

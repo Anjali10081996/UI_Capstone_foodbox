@@ -6,11 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductapiService {
 
-  private url:string = "http://localhost:9003/api/v1/product";
+  private url:string = "http://localhost:8083/api/v1/product";
   constructor(private httpClient : HttpClient) { }
   
   public getProducts(search : string){
-    return this.httpClient.get(this.url+"/getproducts?name="+search+"&category="+search);
+    return this.httpClient.get(this.url+"/getproducts?name="+search);
   }
 
   public getProduct(id : number){

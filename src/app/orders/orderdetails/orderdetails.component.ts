@@ -61,11 +61,19 @@ export class OrderdetailsComponent implements OnInit {
       let orderObj = {"totalPrice" : 0, "email" : form.value.email, "address" : form.value.address, "phoneNo" : form.value.phoneno, "products" : this.products, "user" : this.user};
       this.orderapiService.addOrder(orderObj).subscribe((res) => {
         console.log(res);
+        let orders : any = res;
+        let user = orders.user;
         this.displayAlert = "block";
         let cartObj = {"id" : this.cart["id"],"products" : [], "user" : this.user};
         console.log("clear cart");
         console.log(cartObj);
         this.cartapiService.updateCart(cartObj,cartObj["id"]).subscribe((res) => {
+          console.log(res);
+        },
+        (error) => {
+          console.log(error);
+        });
+        this.userapiService.updateUser(user,user.id).subscribe((res) => {
           console.log(res);
         },
         (error) => {

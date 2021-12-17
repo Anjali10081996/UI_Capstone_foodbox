@@ -17,7 +17,7 @@
         <input class="form-control" name="search" formControlName="search" 
          type="text" placeholder="Product Search" aria-label="search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-        <a class="btn btn-success ml-4" data-toggle="modal" data-target="#addProductId" role="button">Add</a>
+        <a class="btn btn-success ml-4" [style.display] = "isAddDisplay" data-toggle="modal" data-target="#addProductId" role="button">Add</a>
         
     </form>
         <table class="table table-bordered mt-1">
@@ -33,6 +33,9 @@
                         Category
                     </th>
                     <th>
+                        Restaurant/Seller
+                    </th>
+                    <th>
                         Price (in Rs.)
                     </th>
                 </tr>
@@ -43,6 +46,7 @@
                     <td><img src="{{ p.imagePath }}" alt="{{ p.name }}" width="100"  height="100"></td>
                     <td>{{ p.name }}</td>
                     <td>{{ p.category }}</td>
+                    <td>{{ p.seller }}</td>
                     <td>{{ p.price }}</td>
                     <td>
                     <div class="row"> 

@@ -16,8 +16,8 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="productid">Product Id</label>
-                            <input type="text" class="form-control disabled" name="productid" formControlName="productid" value="{{ productId }}"
-                                id="productid" aria-describedby="idHelp" required>
+                            <input  type="text" class="form-control" name="productid" formControlName="productid" value="{{ productId }}"
+                                id="productid" aria-describedby="idHelp" [attr.disabled] = "isDisabled">
                         </div>
                     </div>
                  </div>
@@ -26,7 +26,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name" formControlName="name" 
+                            <input type="text" class="form-control" name="name" formControlName="name"
                                 id="name" aria-describedby="nameHelp" required>
                         </div>
                     </div>
@@ -57,8 +57,11 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="category">Category</label>
-                                <input type="category" class="form-control" name="category" formControlName="category" 
-                                 id="category" aria-describedby="categoryHelp" required>
+                                <select required class="form-control" name="category" formControlName="category"
+                                id="category" aria-describedby="categoryHelp"> 
+                                    <option *ngFor = "let item of categoryimage | keyvalue" value="{{ item.key }}">{{ item.key }}</option>
+                                </select>
+            
                          </div>
                             </div>
                     </div>
@@ -67,10 +70,23 @@
                     <div class="form-row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="role">Image</label>
-                                <select required class="form-control" name="image" formControlName="image" 
-                                id="image" aria-describedby="imageHelp"> 
+                                <label for="foodimage">Food Image</label>
+                                <select required class="form-control" name="foodimage" formControlName="foodimage"
+                                id="foodimage" aria-describedby="foodimageHelp"> 
                                     <option *ngFor = "let item of image | keyvalue" value="{{ item.value }}">{{ item.key }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="form-row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="categoryimage">Category Image</label>
+                                <select required class="form-control" name="categoryimage" formControlName="categoryimage"
+                                id="categoryimage" aria-describedby="categoryimageHelp"> 
+                                    <option *ngFor = "let item of categoryimage | keyvalue" value="{{ item.value }}">{{ item.key }}</option>
                                 </select>
                             </div>
                         </div>

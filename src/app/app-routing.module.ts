@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './account/account.component';
 import { CartComponent } from './cart/cart.component';
+import { CuisinesComponent } from './cuisines/cuisines.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'signin' , component:SigninComponent},
   {path: 'logout' , component:LogoutComponent},
   {path: 'navbar' , component:NavbarComponent},
+  {path: 'cuisines' , component:CuisinesComponent},
   {path: 'products' , component:ProductsComponent},
   {path : 'products/create' , component:CreateproductComponent},
   {path : 'products/update' , component:UpdateproductComponent},
