@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Kitchen-Story-UI",
+            "outputPath": "dist/Food-Box",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Kitchen-Story-UI:build:production"
+              "browserTarget": "Food-Box:build:production"
             },
             "development": {
-              "browserTarget": "Kitchen-Story-UI:build:development"
+              "browserTarget": "Food-Box:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Kitchen-Story-UI:build"
+            "browserTarget": "Food-Box:build"
           }
         },
         "test": {
@@ -106,5 +106,5 @@
       }
     }
   },
-  "defaultProject": "Kitchen-Story-UI"
+  "defaultProject": "Food-Box"
 }
