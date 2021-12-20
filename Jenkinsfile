@@ -9,18 +9,13 @@ pipeline {
     }
 
     stage('Test') {
-      parallel {
-        stage('Static code analysis') {
-            steps { sh 'npm run-script lint' }
-        }
-        stage('Unit tests') {
-            steps { sh 'npm run-script test' }
-        }
-      }
+     steps{
+       echo '----------------- This is a test phase ----------'
+     }
     }
 
     stage('Build') {
-      steps { sh 'npm run-script build' }
+      steps { sh 'ng build --prod' }
     }
   
 
@@ -28,7 +23,7 @@ pipeline {
             steps {
                 echo '----------------- This is a build docker image phase ----------'
                 sh '''
-                    docker image build -t food-box .
+                    docker image build -t foodbox-ui .
                 '''
             }
         }
@@ -37,13 +32,13 @@ pipeline {
             steps {
                 echo '----------------- This is a docker deployment phase ----------'
                 sh '''
-                 (if  [ $(docker ps -a | grep food-box | cut -d " " -f1) ]; then \
-                        echo $(docker rm -f food-box); \
-                        echo "---------------- successfully removed food-box ----------------"
+                 (if  [ $(docker ps -a | grep foodbox-ui | cut -d " " -f1) ]; then \
+                        echo $(docker rm -f foodbox-ui); \
+                        echo "---------------- successfully removed foodbox-ui ----------------"
                      else \
                     echo OK; \
                  fi;);
-            docker container run --restart always --name food-box -p 8082:8082 -d food-box
+            docker container run --restart always --name foodbox-ui -p 8084:8084 -d foodbox-ui
             '''
             }
         }
