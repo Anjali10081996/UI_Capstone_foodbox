@@ -1,2 +1,2 @@
 FROM nginx:1.17.1-alpine
-COPY /dist/Food-Box /usr/share/nginx/html
+COPY /dist/FoodBox-UI /usr/share/nginx/html
