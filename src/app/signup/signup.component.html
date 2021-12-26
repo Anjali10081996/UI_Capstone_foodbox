@@ -45,6 +45,9 @@
                    </div>
                </div>
            </div>
+           <p *ngIf="responseText" class="error">
+            {{responseText}}
+          </p>
         <button id="signup" type="submit" class="btn btn-primary btn-md" >Sign up</button>
     </form>
 </div>

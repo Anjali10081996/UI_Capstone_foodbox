@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class OrderapiService {
 
-  private url:string = "http://65.1.107.222:8083/api/v1/order";
+  private url:string = "http://localhost:8084/api/v1/order";
   constructor(private httpClient : HttpClient) { }
-  
+
   public getOrders(){
     return this.httpClient.get(this.url+"/getorders");
   }

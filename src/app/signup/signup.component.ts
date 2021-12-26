@@ -11,6 +11,7 @@ import { UserapiService } from '../service/userapi.service';
 export class SignupComponent implements OnInit {
   public signupForm : FormGroup;
   public submitted : boolean = false;
+  responseText : string = "";
 
   constructor(private router: Router,private formBuilder: FormBuilder,private userapiService : UserapiService, ) {
     this.signupForm = this.formBuilder.group({
@@ -29,6 +30,7 @@ export class SignupComponent implements OnInit {
       console.log(form);
       this.userapiService.addUser({"username" : form.value.username, "password" : form.value.password, "email" : form.value.email , "role" : form.value.role, "walletBalance" : 10000.0, "loggedIn" : false}).subscribe((res) =>{
         console.log(res)
+        this.responseText = "User added successfully";
         this.router.navigate(["/"]).then( () => {
           window.location.reload();
         });

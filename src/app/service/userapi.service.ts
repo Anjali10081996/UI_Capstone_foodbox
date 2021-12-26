@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserapiService {
 
-  private url:string = "http://65.1.107.222:8083/api/v1/user";
+  //private url:string = "http://65.1.107.222:8083/api/v1/user";
+  private url: string = "http://localhost:8084/api/v1/user";
   constructor(private httpClient : HttpClient) { }
 
   public loginUser(user:any){
@@ -16,7 +17,7 @@ export class UserapiService {
   public logoutUser(user : string){
     return this.httpClient.post(`${this.url}/logout/${user}`,null);
   }
-  
+
   public getUsers(){
     return this.httpClient.get(this.url+"/getusers");
   }
